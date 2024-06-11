@@ -1,0 +1,40 @@
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <div class="container-fluid" data-layout="container">
+        <script>
+          var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+          if (isFluid) {
+            var container = document.querySelector('[data-layout]');
+            container.classList.remove('container');
+            container.classList.add('container-fluid');
+          }
+        </script>
+        <nav class="navbar navbar-vibrant navbar-vertical navbar-expand-xl">
+
+          <app-main-sidebar></app-main-sidebar>
+        </nav>
+
+        <div class="content">
+
+            <app-toolbar></app-toolbar>
+
+
+
+
+           <router-outlet></router-outlet>
+              </div>
+            </div>
+
+
+
+       <app-footer></app-footer>
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+<app-control-sidenav></app-control-sidenav>

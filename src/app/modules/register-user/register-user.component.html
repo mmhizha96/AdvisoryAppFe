@@ -1,0 +1,150 @@
+<main class="main" id="top">
+  {{ user|json }}
+  <div class="container" data-layout="container">
+    <script>
+      var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+      if (isFluid) {
+        var container = document.querySelector('[data-layout]');
+        container.classList.remove('container');
+        container.classList.add('container-fluid');
+      }
+    </script>
+    <div class="row flex-center min-vh-200 py-6">
+      <div class="col-sm-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7"><a class="d-flex flex-center mb-4" href="../../../index.html"><img class="me-2" src="../../../assets/img/icons/spot-illustrations/falcon.png" alt="" width="58" /><span class="font-sans-serif fw-bolder fs-5 d-inline-block">falcon</span></a>
+        <div class="card custom-card">
+          <div class="card-header">
+            <ul class="nav nav-tabs " id="myTab" role="tablist">
+              <li class="nav-item card-header-title col-6"><a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">Advisor</a></li>
+              <li class="nav-item card-header-title col-6"><a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#tab-profile" role="tab" aria-controls="tab-profile" aria-selected="false">Student</a></li>
+            </ul>
+          </div>
+          <div class="card-body p-4 p-sm-5">
+            <div class="tab-content border-bottom p-3" id="myTabContent">
+              <div class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row flex-between-center mb-2">
+                  <div class="col-auto">
+                    <h5>Advisor Register</h5>
+                  </div>
+                  <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">Have an account?</span> <span><a routerLink="login">Login</a></span></div>
+                </div>
+                <form #createuser="ngForm">
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input class="form-control" type="text" name="first_name" [(ngModel)]="user!.advisor!.first_name" autocomplete="on" placeholder="first name" />
+                    </div>
+                    <div class="col-6">
+                      <input class="form-control" type="text" [(ngModel)]="user!.advisor!.last_name" name="last_name" autocomplete="on" placeholder="last name" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input class="form-control" type="text"  [(ngModel)]="user.email" name="email" autocomplete="on" placeholder="Email address" />
+                    </div>
+                    <div class="col-6">
+                      <select name="department_id" class="form-select" [(ngModel)]="user.advisor.department_id">
+                        <option value=undefined>--select department--</option>
+                        <option *ngFor="let dept of departments" [value]="dept.department_id" >{{ dept.name }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-4">
+                      <select name="sex" class="form-select" [(ngModel)]="user.advisor.sex" >
+                        <option value=undefined>--select sex--</option>
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                      </select>
+
+                    </div>
+                    <div class="col-4">
+                      <input class="form-control" type="date"  [(ngModel)]="user.advisor.dob" name="dob" autocomplete="on" placeholder="date of birth" />
+
+                    </div>
+                    <div class="col-4">
+                      <input class="form-control" type="text"  [(ngModel)]="user.advisor.phone_number" name="phone_number" autocomplete="on" placeholder="phone_number" />
+
+                    </div>
+                  </div>
+                  <div class="row gx-2">
+                    <div class="mb-3 col-sm-6">
+                      <input class="form-control" type="password" [(ngModel)]="user.password" name="password" autocomplete="on" placeholder="Password" />
+                    </div>
+                    <div class="mb-3 col-sm-6">
+                      <input class="form-control" type="password" [(ngModel)]="user.password_confirmation" name="password_confirmation" autocomplete="on" placeholder="Confirm Password" />
+
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <button class="btn btn-primary d-block w-100 mt-3" (click)="registerUser(1)">Register</button>
+                  </div>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="tab-profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row flex-between-center mb-2">
+                  <div class="col-auto">
+                    <h5>Student Register</h5>
+                  </div>
+                  <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">Have an account?</span> <span><a routerLink="login">Login</a></span></div>
+                </div>
+                <form createstudent="ngForm">
+
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input class="form-control" type="text" name="first_name" [(ngModel)]="user.student.first_name" autocomplete="on" placeholder="first name" />
+                    </div>
+                    <div class="col-6">
+                      <input class="form-control" type="text" [(ngModel)]="user.student.last_name" name="last_name" autocomplete="on" placeholder="last name" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input class="form-control" type="text"  [(ngModel)]="user.email" name="email" autocomplete="on" placeholder="Email address" />
+                    </div>
+                    <div class="col-6">
+                      <select name="department_id" class="form-select" [(ngModel)]="user.student.programme_id">
+                        <option value=undefined>--select programme--</option>
+                        <option *ngFor="let prog of programmes" [value]="prog.programme_id" >{{ prog.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-4">
+                      <select name="sex" class="form-select" [(ngModel)]="user.student.sex" >
+                        <option value=undefined>--select sex--</option>
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                      </select>
+
+                    </div>
+                    <div class="col-4">
+                      <input class="form-control" type="date"  [(ngModel)]="user.student.dob" name="dob" autocomplete="on" placeholder="date of birth" />
+
+                    </div>
+                    <div class="col-4">
+                      <input class="form-control" type="text"  [(ngModel)]="user.student.phone_number" name="phone_number" autocomplete="on" placeholder="phone_number" />
+
+                    </div>
+                  </div>
+                  <div class="row gx-2">
+                    <div class="mb-3 col-sm-6">
+                      <input class="form-control" type="password" [(ngModel)]="user.password" name="password" autocomplete="on" placeholder="Password" />
+                    </div>
+                    <div class="mb-3 col-sm-6">
+                      <input class="form-control" type="password" [(ngModel)]="user.password_confirmation" name="password_confirmation" autocomplete="on" placeholder="Confirm Password" />
+
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <button class="btn btn-primary d-block w-100 mt-3" (click)="registerUser(2)">Register</button>
+                  </div>
+                 </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

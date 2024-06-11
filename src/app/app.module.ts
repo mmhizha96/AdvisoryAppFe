@@ -4,15 +4,69 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
+
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AuthInterceptor } from './interceptors/AuthInterceptor';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RegisterUserComponent } from './modules/register-user/register-user.component';
+import { UserloginComponent } from './modules/userlogin/userlogin.component';
+import { StudentsComponent } from './pages/students/students.component';
+import { ControlSidenavComponent } from './pages/control-sidenav/control-sidenav.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AdvisorsComponent } from './pages/advisors/advisors.component';
+import { MainComponent } from './modules/main/main.component';
+import { AppointmentsComponent } from './modules/main/appointments/appointments.component';
+import { ChartComponent } from './modules/main/chart/chart.component';
+import { CoursesComponent } from './modules/main/courses/courses.component';
+import { FooterComponent } from './modules/main/footer/footer.component';
+import { ProgrammesComponent } from './modules/main/programmes/programmes.component';
+import { ResultsComponent } from './modules/main/results/results.component';
+import { ScheduleComponent } from './modules/main/schedule/schedule.component';
+import { ToolbarComponent } from './modules/main/toolbar/toolbar.component';
+import { MainSidebarComponent } from './modules/main-sidebar/main-sidebar.component';
+
+
+
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    FooterComponent,
+    ToolbarComponent,
+    AppointmentsComponent,
+    ResultsComponent,
+    ScheduleComponent,
+    ProgrammesComponent,
+    CoursesComponent,
+    ControlSidenavComponent,
+    MainSidebarComponent,
+    ChartComponent,
+    StudentsComponent,
+    DashboardComponent,
+    RegisterUserComponent,
+    UserloginComponent,
+    StudentsComponent,
+    AdvisorsComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+
+    ToastrModule.forRoot()],
+  providers: [
+
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor , multi: true }
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

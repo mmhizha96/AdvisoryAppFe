@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+.active_route{
+  color: #000!important;
+  background-color: #fff;
+
+}
