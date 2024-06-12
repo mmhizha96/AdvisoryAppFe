@@ -24,20 +24,22 @@ export class ViewAppointmentsComponent {
     if (loggedUser !== null) {
       this.user = JSON.parse(loggedUser);
       console.log("data ra user", this.user.user.student.student_id);
-      this.viewStudents(); // Call viewStudents() after user is assigned
+   
     } else {
       console.error("No data stored");
     }
+    this.viewStudents(); 
   }
   
 
   viewStudents() {
-    this.appointmentService.viewAppointments(this.user.user.student.student_id).subscribe((res: AppointmentResponse) => {
-      console.log(res); 
-
-      this.appointments=res.appointment;
- 
-    });
+  
+this.appointmentService.viewAppointments(this.user.user.student.student_id).subscribe(res => {
+  this.appointments = res;
+  console.log('data iri', res);
+}, error => {
+  console.error('Error:', error);
+});
   }
 
 

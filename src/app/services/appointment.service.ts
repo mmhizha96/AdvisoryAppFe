@@ -18,8 +18,12 @@ export class AppointmentService {
     return this.http.post<AppointmentResponse>(this.$baseurl + 'appointments', data);
   }
 
-  viewAppointments(data: Appointment): Observable<AppointmentResponse> {
-    return this.http.post<AppointmentResponse>(this.$baseurl + 'viewAppointment', data);
+  viewAppointments(student_id:number){
+    const url = this.$baseurl + 'viewAppointment';
+    const body = { student_id };
+
+    return this.http.post(url, body);
   }
+  
 
 }

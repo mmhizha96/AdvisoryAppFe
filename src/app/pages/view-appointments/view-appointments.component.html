@@ -10,19 +10,24 @@
         <table class="table mb-0">
           <thead class="text-black bg-200">
             <tr>
+                <th class="align-middle">ID</th>
               <th class="align-middle">Advisor Name</th>
               <th class="align-middle">Purpose</th>
+              <th class="align-middle">Phone Number</th>
               <th class="align-middle">Date</th>
             </tr>
           </thead>
           <tbody id="bulk-select-body">
             <tr *ngIf="!appointments || appointments.length === 0">
-              <td class="text-center" colspan="3">No data found</td>
+                <td class="text-center" colspan="4">No data found</td>
             </tr>
-            <tr *ngFor="let app of appointments">
-              <th class="align-middle">Name</th>
-              <td class="align-middle">{{app.purpose}}</td>
-              <td class="align-middle">{{ app.date }}</td>
+            
+            <tr *ngFor="let app of appointments, let i=index">
+                <th class="align-middle">{{ i + 1 }}</th>
+              <th class="align-middle">{{app.first_name }} {{app.last_name }}</th>
+              <th class="align-middle">{{app.purpose }}</th>
+              <td class="align-middle">{{app.phone_number}}</td>
+              <td class="align-middle">{{ app.date | date }}</td>
             </tr>
           </tbody>
         </table>
