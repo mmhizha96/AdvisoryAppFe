@@ -52,14 +52,14 @@
                 </div>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"  *ngIf="user.role_id==2">
               <a class="nav-link " routerLink="advisors"  routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
                 <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-people-carry "></span></span><span class="nav-link-text ps-1">Advisors</span>
                 </div>
               </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item"*ngIf="user.role_id==1">
               <a class="nav-link " routerLink="students"  routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
                 <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-users"></span></span>   <span class="nav-link-text ps-1">students</span>
                 </div>
