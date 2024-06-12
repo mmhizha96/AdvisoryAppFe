@@ -21,9 +21,23 @@ export class StudentsService {
     );
   }
 
-  approveRequest(data:AdvisorAssignments){
-    return this.http.post<AdvisorAssignments[]>(
+  approveRequest(data:AdvisorAssignments):Observable<StudentsServiceResponse>{
+    return this.http.post<StudentsServiceResponse>(
       this.$baseurl + 'advisor-assignments/approve',
      data)
   }
+
+  deletestudentRequest(data:AdvisorAssignments):Observable<StudentsServiceResponse>{
+    let params = new HttpParams().set('assignment_id', data.assignment_id);
+   return this.http.delete<StudentsServiceResponse>(
+      this.$baseurl + 'advisor-assignments/delete',{params}
+
+    );
+  }
+}
+
+
+
+export class StudentsServiceResponse{
+  message!:string
 }
