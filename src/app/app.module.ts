@@ -30,6 +30,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewstudentComponent } from './pages/viewstudent/viewstudent.component';
+import { AppointmentComponent } from './pages/appointment/appointment.component';
+import { ViewAppointmentsComponent } from './pages/view-appointments/view-appointments.component';
+import { VideoCallComponent } from './pages/video-call/video-call.component';
 
 
 
@@ -56,6 +59,9 @@ import { ViewstudentComponent } from './pages/viewstudent/viewstudent.component'
   
     AdvisorsComponent,
         ViewstudentComponent,
+        AppointmentComponent,
+        ViewAppointmentsComponent,
+        VideoCallComponent,
   ],
   imports: [
     CommonModule,

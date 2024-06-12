@@ -18,6 +18,12 @@ export class AuthService {
   login(data: User): Observable<Authres> {
     return this.http.post<Authres>(this.$baseurl + 'login', data);
   }
+
+
+  generateToken(): Observable<any> {
+    return this.http.post<any>(this.$baseurl + 'twilio/generate-token', {});
+  }
+  
 }
 
 export class Authres {
