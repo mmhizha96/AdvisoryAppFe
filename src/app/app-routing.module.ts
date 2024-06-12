@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { UserloginComponent } from './modules/userlogin/userlogin.component';
-import { RegisterUserComponent } from './modules/register-user/register-user.component';
-
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { StudentsComponent } from './pages/students/students.component';
-import { AdvisorsComponent } from './pages/advisors/advisors.component';
-import { MainComponent } from './modules/main/main.component';
 import { AppointmentsComponent } from './modules/main/appointments/appointments.component';
 import { ChartComponent } from './modules/main/chart/chart.component';
+import { MainComponent } from './modules/main/main.component';
 import { ProgrammesComponent } from './modules/main/programmes/programmes.component';
 import { ResultsComponent } from './modules/main/results/results.component';
+import { RegisterUserComponent } from './modules/register-user/register-user.component';
+import { UserloginComponent } from './modules/userlogin/userlogin.component';
+import { AdvisorsComponent } from './pages/advisors/advisors.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { StudentsComponent } from './pages/students/students.component';
+
 
 const routes: Routes = [
  {path:'main', component:MainComponent, children:[

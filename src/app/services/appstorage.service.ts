@@ -12,7 +12,8 @@ store(key:string,value:any){
 }
 
 retrieve(key:string){
-return JSON.parse(key);
+  let user=localStorage.getItem(key);
+return JSON.parse(user as string);
 }
 
 }

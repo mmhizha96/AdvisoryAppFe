@@ -2,32 +2,33 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+
 
 
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { AuthInterceptor } from './interceptors/AuthInterceptor';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RegisterUserComponent } from './modules/register-user/register-user.component';
-import { UserloginComponent } from './modules/userlogin/userlogin.component';
-import { StudentsComponent } from './pages/students/students.component';
-import { ControlSidenavComponent } from './pages/control-sidenav/control-sidenav.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { AdvisorsComponent } from './pages/advisors/advisors.component';
-import { MainComponent } from './modules/main/main.component';
+import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { AppComponent } from './app.component';
+import { AuthInterceptor } from './interceptors/AuthInterceptor';
+import { MainSidebarComponent } from './modules/main-sidebar/main-sidebar.component';
 import { AppointmentsComponent } from './modules/main/appointments/appointments.component';
 import { ChartComponent } from './modules/main/chart/chart.component';
 import { CoursesComponent } from './modules/main/courses/courses.component';
 import { FooterComponent } from './modules/main/footer/footer.component';
+import { MainComponent } from './modules/main/main.component';
 import { ProgrammesComponent } from './modules/main/programmes/programmes.component';
 import { ResultsComponent } from './modules/main/results/results.component';
 import { ScheduleComponent } from './modules/main/schedule/schedule.component';
 import { ToolbarComponent } from './modules/main/toolbar/toolbar.component';
-import { MainSidebarComponent } from './modules/main-sidebar/main-sidebar.component';
+import { RegisterUserComponent } from './modules/register-user/register-user.component';
+import { UserloginComponent } from './modules/userlogin/userlogin.component';
+import { AdvisorsComponent } from './pages/advisors/advisors.component';
+import { ControlSidenavComponent } from './pages/control-sidenav/control-sidenav.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { StudentsComponent } from './pages/students/students.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -51,7 +52,7 @@ import { MainSidebarComponent } from './modules/main-sidebar/main-sidebar.compon
     DashboardComponent,
     RegisterUserComponent,
     UserloginComponent,
-    StudentsComponent,
+  
     AdvisorsComponent,
   ],
   imports: [
