@@ -43,20 +43,20 @@
               </div>
             </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="user.role_id==2">
               <a class="nav-link " routerLink="results" routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
                 <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-envelope-open"></span></span><span class="nav-link-text ps-1">Results</span>
                 </div>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"  *ngIf="user.role_id==2">
               <a class="nav-link " routerLink="advisors"  routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
                 <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-people-carry "></span></span><span class="nav-link-text ps-1">Advisors</span>
                 </div>
               </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item"*ngIf="user.role_id==1">
               <a class="nav-link " routerLink="students"  routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
                 <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-users"></span></span>   <span class="nav-link-text ps-1">students</span>
                 </div>
@@ -70,28 +70,7 @@
 
 
 
-        <li class="nav-item">
-          <!-- label-->
-          <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-            <div class="col-auto navbar-vertical-label">pprogrammes
-            </div>
-            <div class="col ps-0">
-              <hr class="mb-0 navbar-vertical-divider" />
-            </div>
-          </div>
-          <!-- parent pages--><a class="nav-link " routerLink="programmes" routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
-            <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-envelope-open"></span></span><span class="nav-link-text ps-1">Programmes</span>
-            </div>
-          </a>
 
-
-
-
-
-
-
-
-        </li>
 
       </ul>
 
