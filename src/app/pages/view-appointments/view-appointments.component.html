@@ -1,0 +1,32 @@
+<div class="card shadow-none p-1">
+    <div class="card-header">
+      <h5 class="mb-0" data-anchor="data-anchor">My Appointments</h5>
+    </div>
+    <div class="card-body p-0 pb-3">
+      <div class="d-flex align-items-center justify-content-end my-3">
+        <div id="bulk-select-replace-element"></div>
+      </div>
+      <div class="table-responsive scrollbar">
+        <table class="table mb-0">
+          <thead class="text-black bg-200">
+            <tr>
+              <th class="align-middle">Advisor Name</th>
+              <th class="align-middle">Purpose</th>
+              <th class="align-middle">Date</th>
+            </tr>
+          </thead>
+          <tbody id="bulk-select-body">
+            <tr *ngIf="!appointments || appointments.length === 0">
+              <td class="text-center" colspan="3">No data found</td>
+            </tr>
+            <tr *ngFor="let app of appointments">
+              <th class="align-middle">Name</th>
+              <td class="align-middle">{{app.purpose}}</td>
+              <td class="align-middle">{{ app.date }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
