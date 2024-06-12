@@ -77,9 +77,9 @@
                       >Approve</a
                     >
                     <a
-                      *ngIf="student.status == 'pending'"
+
                       class="dropdown-item text-danger"
-                      (click)="Reject()"
+                      (click)="deleteRequest(student)"
                       >Delete</a
                     >
                   </div>

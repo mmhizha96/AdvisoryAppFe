@@ -11,36 +11,29 @@ import { AdvisorsComponent } from './pages/advisors/advisors.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { ViewstudentComponent } from './pages/viewstudent/viewstudent.component';
-import { AppointmentComponent } from './pages/appointment/appointment.component';
-import { ViewAppointmentsComponent } from './pages/view-appointments/view-appointments.component';
-
-
 
 const routes: Routes = [
- {path:'main', component:MainComponent, children:[
-  {path:'appointment', component:AppointmentComponent},
-  {path:'charts', component:ChartComponent},
-  {path:'programmes', component:ProgrammesComponent},
-  {path:'results', component:ResultsComponent},
-  {path:'dashboard', component:DashboardComponent},
-  {path:'advisors', component:AdvisorsComponent},
-  {path:'students', component:StudentsComponent},
-  {path:'view-student',component:ViewstudentComponent},
-  {path:'view-appointments',component:ViewAppointmentsComponent},
+  {
+    path: 'main',
+    component: MainComponent,
+    children: [
+      { path: 'appointments', component: AppointmentsComponent },
+      { path: 'charts', component: ChartComponent },
+      { path: 'programmes', component: ProgrammesComponent },
+      { path: 'results', component: ResultsComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'advisors', component: AdvisorsComponent },
+      { path: 'students', component: StudentsComponent },
+      { path: 'view-student', component: ViewstudentComponent },
+    ],
+  },
 
-
- ],
-
-},
-
-  {path:'login', component:UserloginComponent},
-  {path:'register', component:RegisterUserComponent}
-
-
+  { path: 'login', component: UserloginComponent },
+  { path: 'register', component: RegisterUserComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

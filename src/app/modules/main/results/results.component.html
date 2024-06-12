@@ -8,12 +8,14 @@
       <div id="bulk-select-replace-element ">
 
         <div class="input-group">
-          <select class="form-select js-choice" id="organizerSingle" size="1" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'>
-            <option value="">Select level</option>
-            <option>Massachusetts Institute of Technology</option>
-            <option>University of Chicago</option>
-            <option>GSAS Open Labs At Harvard</option>
-            <option>California Institute of Technology </option>
+          <select class="form-select js-choice" id="organizerSingle" size="1" name="organizerSingle" [(ngModel)]="resultsfilter.level_id" >
+            <option value=undefined>Select level</option>
+            <option *ngFor="let level of levels" [ngValue]="level.level_id">{{ level.level }}</option>
+
+          </select>
+           <select class="form-select js-choice" id="organizerSingle" size="1" (change)="getstudentsresults()" name="organizerSingle"  [(ngModel)]="resultsfilter.semester_id" >
+            <option value=undefined>Select semester</option>
+            <option *ngFor="let semester of semesters" [ngValue]="semester.semester_id">{{ semester.semester }}</option>
           </select>
 
             <button class="btn btn-falcon-success btn-sm input-group-text pl-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"><span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span><span class="ms-1">New</span></button>
@@ -30,21 +32,25 @@
           <tr>
 
             <th class="align-middle">Course</th>
-            <th class="align-middle">Symbol </th>
+            <th class="align-middle">Mark </th>
             <th class="align-middle">Credits</th>
+            <th class="align-middle">GPA</th>
+
 
           </tr>
         </thead>
         <tbody id="bulk-select-body">
-          <tr>
+          <tr *ngFor="let result of results">
 
-            <th class="align-middle">Kit Harington</th>
-            <td class="align-middle">British</td>
-            <td class="align-middle">Male</td>
-     
+            <th class="align-middle">{{ result?.module_name }}</th>
+            <td class="align-middle">{{ result?.mark }}</td>
+            <td class="align-middle">{{ result?.credits }}</td>
+            <td class="align-middle">{{ result?.gpa }}</td>
+
           </tr>
 
         </tbody>
+
       </table>
     </div>
   </div>
@@ -61,20 +67,86 @@
           <h4 class="mb-1" id="staticBackdropLabel">Create New Schedule</h4>
 
         </div>
-        <form class="row g-3">
-          <div class="col-md-6">
-            <label class="form-label" for="inputEmail4">Name</label>
-            <input class="form-control" id="inputEmail4" type="text" />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label" for="inputEmail4">Programme Codel </label>
-            <input class="form-control" id="inputEmail4" type="text" />
-          </div>
+        <form class=" g-3">
+
+<div class="row m-4">
+
+  <div class="col-md-6">
+    <select class="form-select"  name="organizerSingle" [(ngModel)]="myresultsdata.level_id" >
+      <option value=undefined>Select level</option>
+      <option *ngFor="let level of levels" [ngValue]="level.level_id">{{ level.level }}</option>
+
+    </select>
 
 
-          <div class="col-12">
-            <button class="btn btn-primary" type="submit">Save</button>
-          </div>
+
+  </div>
+  <div class="col-md-6">
+    <select class="form-select js-choice" name="organizerSingle"  [(ngModel)]="myresultsdata.semester_id" >
+      <option value=undefined>Select semester</option>
+      <option *ngFor="let semester of semesters" [ngValue]="semester.semester_id">{{ semester.semester }}</option>
+    </select>
+  </div>
+</div>
+
+
+<div class="row m-4 align-items-end">
+  <div class="col-md-3">
+      <div class="form-group">
+          <label class="form-label" for="moduleName">Module Name</label>
+          <input class="form-control" required [(ngModel)]="result.module_name" name="module_name" id="moduleName" type="text" />
+      </div>
+  </div>
+  <div class="col-md-3">
+      <div class="form-group">
+          <label class="form-label" for="mark">Mark</label>
+          <input class="form-control" id="mark" required [(ngModel)]="result.mark" name="mark" type="number" />
+      </div>
+  </div>
+  <div class="col-md-3">
+      <div class="form-group">
+          <label class="form-label" for="credits">Credits</label>
+          <input class="form-control" id="credits" required [(ngModel)]="result.credits" name="credits" type="number" />
+      </div>
+  </div>
+  <div class="col-md-3">
+      <button class="btn btn-info mr-1" [hidden]="!result.credits||!result.module_name||!result.mark" (click)="pushResult()"><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+      <button class="btn btn-warning ml-1" (click)="clearResult()"><i class="fa fa-trash" aria-hidden="true"></i> Clear</button>
+  </div>
+</div>
+<div class="row">
+ <div class="col-md-12">
+  <table class="table">
+    <thead class="text-black bg-200">
+      <tr>
+
+        <th class="align-middle">Course</th>
+        <th class="align-middle">Mark </th>
+        <th class="align-middle">Credits</th>
+
+
+
+      </tr>
+    </thead>
+    <tbody id="bulk-select-body">
+      <tr *ngFor="let result of myresultsdata?.results">
+
+        <th class="align-middle">{{ result?.module_name }}</th>
+        <td class="align-middle">{{ result?.mark }}</td>
+        <td class="align-middle">{{ result?.credits }}</td>
+
+
+      </tr>
+
+    </tbody>
+
+  </table>
+ </div>
+</div>
+
+   <div class="col-12">
+    <button class="btn btn-primary" (click)="createStudentResults()" type="submit">Save</button>
+  </div>
         </form>
 
 

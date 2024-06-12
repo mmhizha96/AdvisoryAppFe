@@ -7,15 +7,14 @@ import { Observable } from 'rxjs';
 import { AdvisorAssignments } from '../../models/advisor-assignments';
 import { Student } from '../../Model/student';
 
+
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
   styleUrl: './students.component.css',
 })
 export class StudentsComponent implements OnInit {
-  Reject() {
-    throw new Error('Method not implemented.');
-  }
+
   Approve(data: AdvisorAssignments) {
     this.studentservice.approveRequest(data).subscribe((res) => {
       this.getAdvisorstudents();
@@ -39,11 +38,18 @@ export class StudentsComponent implements OnInit {
 
   viewstudent(student: AdvisorAssignments) {
     this.storage.store('student', student);
-    this.router.navigate(['view-student']);
+    this.router.navigate(['mainview-student']);
+  }
+
+  deleteRequest(data:AdvisorAssignments)
+  {
+    this.studentservice.deletestudentRequest(data).subscribe(res=>{
+      this.getAdvisorstudents();
+    })
   }
 
   getAdvisorstudents() {
-    console.log('munooo');
+    // console.log('munooo');
 
     this.studentservice
       .getAdvisorstudents(this.user.user.advisor)
