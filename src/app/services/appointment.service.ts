@@ -20,11 +20,23 @@ export class AppointmentService {
 
   studentsAppointments(student_id: number, advisor_id: number) {
     const url = this.$baseurl + 'my-appointments';
-    const body = { student_id, advisor_id }; // Include both student_id and advisor_id in the body
+    const body = { student_id, advisor_id }; 
   
     return this.http.post(url, body);
   }
+
+  advisorAppointments(advisor_id:number){
+    const url = this.$baseurl + 'advisorAppointments';
+    const body = { advisor_id }; 
   
+    return this.http.post(url, body);
+
+
+  }
+
+  approveAppointment(data: Appointment): Observable<AppointmentResponse> {
+    return this.http.post<AppointmentResponse>(this.$baseurl + 'update-Appointment', data);
+  }
   
 
 }

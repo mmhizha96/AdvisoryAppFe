@@ -42,6 +42,7 @@ export class MakeAppointmentComponent implements OnInit {
 
     this.appointment.student_id = student_id;
     this.appointment.advisor_id = advisor_id;
+    this.appointment.status = "pending";
     
     this.appointmentService.addAppointment(this.appointment).subscribe((res: AppointmentResponse) => {
       console.log(res.message);
