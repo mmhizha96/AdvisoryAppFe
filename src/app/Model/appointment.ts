@@ -4,4 +4,5 @@ export class Appointment {
   advisor_id!:number
   purpose!:string
   status!:number
+  date!:Date
 }

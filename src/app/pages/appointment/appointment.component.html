@@ -1,0 +1,54 @@
+<div class="card shadow-none p-1">
+    <div class="card-header">
+      <h5 class="mb-0" data-anchor="data-anchor">Student : {{
+        student.student.first_name +
+          "  " +
+          student.student.last_name
+      }} </h5>
+    </div>
+    <div class="card-body p-0 pb-3">
+      <div class="d-flex align-items-center justify-content-end my-3">
+        <div id="bulk-select-replace-element">
+  
+        </div>
+      </div>
+      <div class="table-responsive scrollbar">
+      
+            <div class="table-responsive">
+                <form class="row g-3" (submit)="addAppointment()">
+                    <div class="col-md-6">
+                      <label class="form-label" for="purpose">Purpose</label>
+                      <input class="form-control" name="purpose" id="purpose" type="text" [(ngModel)]="appointment.purpose" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="purpose">Status</label>
+                        <input class="form-control" name="status" id="purpose" type="text" [(ngModel)]="appointment.status" />
+                      </div>
+                  
+                    <div class="col-md-6">
+                      <label class="form-label" for="date">Date</label>
+                      <input class="form-control" name="date" id="date" type="date" [(ngModel)]="appointment.date" />
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                  </form>
+
+            </div>
+          
+      </div>
+    </div>
+  </div>
+  
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-keyboard="false"
+    data-bs-backdrop="static"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+
+  </div>
+  

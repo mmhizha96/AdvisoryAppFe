@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from '../../services/students.service';
 import { User } from '../../Model/user';
 import { AppstorageService } from '../../services/appstorage.service';
 import { Observable } from 'rxjs';
 import { AdvisorAssignments } from '../../models/advisor-assignments';
+import { Student } from '../../Model/student';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class StudentsComponent implements OnInit {
   constructor(
     private router: Router,
     private studentservice: StudentsService,
-    private storage: AppstorageService
+    private storage: AppstorageService,
+    private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
     this.user = this.storage.retrieve('loggedUser');
@@ -55,4 +57,12 @@ export class StudentsComponent implements OnInit {
         this.studentsassigned = res;
       });
   }
+
+  setStudent(student: AdvisorAssignments) {
+    const studentDataString = JSON.stringify(student);
+    sessionStorage.setItem("studentData", studentDataString);
+    this.router.navigate(['/main', 'appointment']);
+  }
+
+  
 }
