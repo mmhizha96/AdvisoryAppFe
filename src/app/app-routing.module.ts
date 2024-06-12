@@ -10,6 +10,7 @@ import { UserloginComponent } from './modules/userlogin/userlogin.component';
 import { AdvisorsComponent } from './pages/advisors/advisors.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { StudentsComponent } from './pages/students/students.component';
+import { ViewstudentComponent } from './pages/viewstudent/viewstudent.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'dashboard', component:DashboardComponent},
   {path:'advisors', component:AdvisorsComponent},
   {path:'students', component:StudentsComponent},
+  {path:'view-student',component:ViewstudentComponent}
  ],
 
 },

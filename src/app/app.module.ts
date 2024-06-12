@@ -29,6 +29,7 @@ import { ControlSidenavComponent } from './pages/control-sidenav/control-sidenav
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewstudentComponent } from './pages/viewstudent/viewstudent.component';
 
 
 
@@ -54,6 +55,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserloginComponent,
   
     AdvisorsComponent,
+        ViewstudentComponent,
   ],
   imports: [
     CommonModule,
