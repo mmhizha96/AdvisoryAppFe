@@ -34,7 +34,7 @@ export class ViewAppointmentsComponent {
 
   viewStudents() {
   
-this.appointmentService.viewAppointments(this.user.user.student.student_id).subscribe(res => {
+this.appointmentService.viewAppointments(this.user.user.student.student_id).subscribe((res: any) => {
   this.appointments = res;
   console.log('data iri', res);
 }, error => {

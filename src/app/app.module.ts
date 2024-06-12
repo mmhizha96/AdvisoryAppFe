@@ -32,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewstudentComponent } from './pages/viewstudent/viewstudent.component';
 import { AppointmentComponent } from './pages/appointment/appointment.component';
 import { ViewAppointmentsComponent } from './pages/view-appointments/view-appointments.component';
+import { VideoCallComponent } from './pages/video-call/video-call.component';
 
 
 
@@ -60,6 +61,7 @@ import { ViewAppointmentsComponent } from './pages/view-appointments/view-appoin
         ViewstudentComponent,
         AppointmentComponent,
         ViewAppointmentsComponent,
+        VideoCallComponent,
   ],
   imports: [
     CommonModule,

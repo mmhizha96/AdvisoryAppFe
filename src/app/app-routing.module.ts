@@ -15,6 +15,7 @@ import { AppointmentComponent } from './pages/appointment/appointment.component'
 import { ViewAppointmentsComponent } from './pages/view-appointments/view-appointments.component';
 
 
+
 const routes: Routes = [
  {path:'main', component:MainComponent, children:[
   {path:'appointment', component:AppointmentComponent},
@@ -25,7 +26,9 @@ const routes: Routes = [
   {path:'advisors', component:AdvisorsComponent},
   {path:'students', component:StudentsComponent},
   {path:'view-student',component:ViewstudentComponent},
-  {path:'view-appointments',component:ViewAppointmentsComponent}
+  {path:'view-appointments',component:ViewAppointmentsComponent},
+
+
  ],
 
 },
