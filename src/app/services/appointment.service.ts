@@ -18,12 +18,13 @@ export class AppointmentService {
     return this.http.post<AppointmentResponse>(this.$baseurl + 'appointments', data);
   }
 
-  viewAppointments(student_id:number){
-    const url = this.$baseurl + 'viewAppointment';
-    const body = { student_id };
-
+  studentsAppointments(student_id: number, advisor_id: number) {
+    const url = this.$baseurl + 'my-appointments';
+    const body = { student_id, advisor_id }; // Include both student_id and advisor_id in the body
+  
     return this.http.post(url, body);
   }
+  
   
 
 }

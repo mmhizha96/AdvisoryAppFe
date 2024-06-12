@@ -5,15 +5,7 @@
   <div class="card-body p-0 pb-3">
     <div class="d-flex align-items-center justify-content-end my-3">
       <div id="bulk-select-replace-element">
-        <button
-          class="btn btn-falcon-success btn-sm"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-          type="button"
-        >
-          <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span
-          ><span class="ms-1">New</span>
-        </button>
+    
       </div>
     </div>
     <div class="table-responsive scrollbar">
@@ -69,7 +61,7 @@
                 <div class="dropdown-menu dropdown-menu-end border py-0">
                   <div class="bg-white py-2">
                     <a class="dropdown-item"(click)="setStudent(student)">View</a>
-                    <a class="dropdown-item" href="#!">make appointment</a>
+                
                     <a
                       *ngIf="student.status == 'pending'"
                       class="dropdown-item text-info"

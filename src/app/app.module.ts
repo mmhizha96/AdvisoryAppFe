@@ -33,6 +33,8 @@ import { ViewstudentComponent } from './pages/viewstudent/viewstudent.component'
 import { AppointmentComponent } from './pages/appointment/appointment.component';
 import { ViewAppointmentsComponent } from './pages/view-appointments/view-appointments.component';
 import { VideoCallComponent } from './pages/video-call/video-call.component';
+import { MakeAppointmentComponent } from './pages/make-appointment/make-appointment.component';
+import { StudentAppointmentsComponent } from './pages/student-appointments/student-appointments.component';
 
 
 
@@ -62,6 +64,8 @@ import { VideoCallComponent } from './pages/video-call/video-call.component';
         AppointmentComponent,
         ViewAppointmentsComponent,
         VideoCallComponent,
+        MakeAppointmentComponent,
+        StudentAppointmentsComponent,
   ],
   imports: [
     CommonModule,

@@ -13,10 +13,14 @@ import { StudentsComponent } from './pages/students/students.component';
 import { ViewstudentComponent } from './pages/viewstudent/viewstudent.component';
 import { AppointmentComponent } from './pages/appointment/appointment.component';
 import { ViewAppointmentsComponent } from './pages/view-appointments/view-appointments.component';
+import { MakeAppointmentComponent } from './pages/make-appointment/make-appointment.component';
+import { StudentAppointmentsComponent } from './pages/student-appointments/student-appointments.component';
 
 const routes: Routes = [
   {path:'main', component:MainComponent, children:[
     {path:'appointment', component:AppointmentComponent},
+    {path:'makeAppointment', component:MakeAppointmentComponent},
+    {path:'studentAppointments', component:StudentAppointmentsComponent},
     {path:'charts', component:ChartComponent},
     {path:'programmes', component:ProgrammesComponent},
     {path:'results', component:ResultsComponent},
