@@ -6,6 +6,7 @@ import { AppstorageService } from '../../services/appstorage.service';
 import { Observable } from 'rxjs';
 import { AdvisorAssignments } from '../../models/advisor-assignments';
 
+
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
@@ -35,7 +36,7 @@ export class StudentsComponent implements OnInit {
 
   viewstudent(student: AdvisorAssignments) {
     this.storage.store('student', student);
-    this.router.navigate(['main/view-student']);
+    this.router.navigate(['mainview-student']);
   }
 
   deleteRequest(data:AdvisorAssignments)
