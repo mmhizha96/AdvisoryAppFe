@@ -10,4 +10,5 @@ export class Student {
   user_id!:number
   registration_number!:string
   programme!:Programme
+  student_id!: number
 }
