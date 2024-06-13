@@ -15,9 +15,11 @@ import { AppointmentComponent } from './pages/appointment/appointment.component'
 import { ViewAppointmentsComponent } from './pages/view-appointments/view-appointments.component';
 import { MakeAppointmentComponent } from './pages/make-appointment/make-appointment.component';
 import { StudentAppointmentsComponent } from './pages/student-appointments/student-appointments.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {path:'main', component:MainComponent, children:[
+  {path:'main', component:MainComponent,    canActivate: [authGuard],children:[
+
     {path:'appointment', component:AppointmentComponent},
     {path:'makeAppointment', component:MakeAppointmentComponent},
     {path:'studentAppointments', component:StudentAppointmentsComponent},
@@ -29,14 +31,15 @@ const routes: Routes = [
     {path:'students', component:StudentsComponent},
     {path:'view-student',component:ViewstudentComponent},
     {path:'view-appointments',component:ViewAppointmentsComponent},
-  
-  
+    {path:'',redirectTo:'dashboard',pathMatch:'full'},
+
    ],
-  
+
   },
 
   { path: 'login', component: UserloginComponent },
   { path: 'register', component: RegisterUserComponent },
+  {path:'',redirectTo:'login',pathMatch:'full'},
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,11 @@ import { Router } from '@angular/router';
   styleUrl: './main.component.css'
 })
 export class MainComponent implements OnInit {
-constructor(private router:Router){}
+constructor(private router:Router,private authservice:AuthService){}
   ngOnInit(): void {
-    this.router.navigate(['main/dashboard']);
+ 
   }
+
+
 
 }
