@@ -1,36 +1,58 @@
-<div class="card h-lg-100">
-  <div class="card-header">
-    <div class="row flex-between-center">
-      <div class="col-auto">
-        <h6 class="mb-0">Total Sales</h6>
-      </div>
-      <div class="col-auto d-flex">
-        <select class="form-select form-select-sm select-month me-2">
-          <option value="0">January</option>
-          <option value="1">February</option>
-          <option value="2">March</option>
-          <option value="3">April</option>
-          <option value="4">May</option>
-          <option value="5">Jun</option>
-          <option value="6">July</option>
-          <option value="7">August</option>
-          <option value="8">September</option>
-          <option value="9">October</option>
-          <option value="10">November</option>
-          <option value="11">December</option>
-        </select>
-        <div class="dropdown font-sans-serif btn-reveal-trigger">
-          <button class="btn btn-link text-600 btn-sm dropdown-toggle dropdown-caret-none btn-reveal" type="button" id="dropdown-total-sales" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--2"></span></button>
-          <div class="dropdown-menu dropdown-menu-end border py-2" aria-labelledby="dropdown-total-sales"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-            <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
+<div class="card">
+  <div class="card-body">
+    <ul
+      class="nav nav-tabs border-0 chart-tab flex-nowrap"
+      id="audience-chart-tab"
+      role="tablist"
+    >
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link mb-0 active"
+          id="users-tab"
+          data-bs-toggle="tab"
+          href="#users"
+          role="tab"
+          aria-controls="users"
+          aria-selected="true"
+        >
+          <div class="audience-tab-item p-2 pe-4">
+            <h6 class="text-800 fs--2 text-nowrap">Connections</h6>
+            <h5 class="text-800">{{ stats?.connections }}</h5>
+            <div class="d-flex align-items-center">
+              <span class="fas fa-caret-up text-success"></span>
+              <h6 class="fs--2 mb-0 ms-2 text-success"></h6>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link mb-0"
+          id="sessions-tab"
+          data-bs-toggle="tab"
+          href="#sessions"
+          role="tab"
+          aria-controls="sessions"
+          aria-selected="false"
+        >
+          <div class="audience-tab-item p-2 pe-4">
+            <h6 class="text-800 fs--2 text-nowrap">Appointments</h6>
+            <h5 class="text-800">{{ stats.total_appointments }}</h5>
+            <div class="d-flex align-items-center">
+              <span class="fas fa-caret-up text-success"></span>
+              <h6 class="fs--2 mb-0 ms-2 text-success"></h6>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
   </div>
+</div>
+
+<div class="card h-lg-100">
   <div class="card-body h-100 pe-0">
     <div class="chart-container">
-      <canvas  id="MyChart" >{{ chart }}</canvas>
-</div>
+      <canvas id="MyChart">{{ chart }}</canvas>
+    </div>
   </div>
 </div>

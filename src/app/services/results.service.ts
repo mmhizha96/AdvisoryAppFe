@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Level } from '../models/level';
 import { Semester } from '../models/semester';
 import { Result, ResultData } from '../models/result';
+import { ResultTrend } from '../models/result-trend';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,10 @@ export class ResultsService {
 
 
 return this.http.get<Result[]>(this.baseurl+"results",{params});
+  }
+  getResultTrends(student_id:number): Observable<ResultTrend[]> {
+    let params= new HttpParams().set('student_id',student_id);
+    return this.http.get<ResultTrend[]>(this.baseurl+'result-trends',{params});
   }
 
 
