@@ -36,10 +36,7 @@ export class StudentsComponent implements OnInit {
     this.getAdvisorstudents();
   }
 
-  viewstudent(student: AdvisorAssignments) {
-    this.storage.store('student', student);
-    this.router.navigate(['mainview-student']);
-  }
+
 
   deleteRequest(data:AdvisorAssignments)
   {
@@ -59,10 +56,10 @@ export class StudentsComponent implements OnInit {
   }
 
   setStudent(student: AdvisorAssignments) {
-    const studentDataString = JSON.stringify(student);
-    sessionStorage.setItem("studentData", studentDataString);
+    this.storage.store('student', student);
+
     this.router.navigate(['/main', 'appointment']);
   }
 
-  
+
 }

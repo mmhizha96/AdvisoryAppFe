@@ -1,54 +1,150 @@
-<div class="card shadow-none p-1">
-    <div class="card-header">
-      <h5 class="mb-0" data-anchor="data-anchor">Student : {{
-        student.student.first_name +
-          "  " +
-          student.student.last_name
-      }} </h5>
-    </div>
-    <div class="card-body p-0 pb-3">
-      <div class="d-flex align-items-center justify-content-end my-3">
-        <div id="bulk-select-replace-element">
-  
+<div class="card shadow-none p-2">
+  <div class="card-header">
+    <h5 class="mb-0" data-anchor="data-anchor">
+      Student :
+      {{ student?.student?.first_name + "  " + student?.student?.last_name }}
+    </h5>
+  </div>
+  <div class="card-body p-0 pb-3">
+    <div class="d-flex align-items-center justify-content-end my-3">
+      <div id="bulk-select-replace-element ">
+        <div class="input-group">
+          <select
+            class="form-select js-choice"
+            id="organizerSingle"
+            size="1"
+            name="organizerSingle"
+            [(ngModel)]="resultsfilter.level_id"
+          >
+            <option value="undefined">Select level</option>
+            <option *ngFor="let level of levels" [ngValue]="level.level_id">
+              {{ level.level }}
+            </option>
+          </select>
+          <select
+            class="form-select js-choice"
+            id="organizerSingle"
+            size="1"
+            (change)="getstudentsresults()"
+            name="organizerSingle"
+            [(ngModel)]="resultsfilter.semester_id"
+          >
+            <option value="undefined">Select semester</option>
+            <option
+              *ngFor="let semester of semesters"
+              [ngValue]="semester.semester_id"
+            >
+              {{ semester.semester }}
+            </option>
+          </select>
+
+          <button *ngIf="student.status=='approved'"
+            class="btn btn-falcon-success btn-sm input-group-text pl-2"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            type="button"
+          >
+            <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span
+            ><span class="ms-1">New Appointment</span>
+          </button>
         </div>
       </div>
-      <div class="table-responsive scrollbar">
-      
-            <div class="table-responsive">
-                <form class="row g-3" (submit)="addAppointment()">
-                    <div class="col-md-6">
-                      <label class="form-label" for="purpose">Purpose</label>
-                      <input class="form-control" name="purpose" id="purpose" type="text" [(ngModel)]="appointment.purpose" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="purpose">Status</label>
-                        <input class="form-control" name="status" id="purpose" type="text" [(ngModel)]="appointment.status" />
-                      </div>
-                  
-                    <div class="col-md-6">
-                      <label class="form-label" for="date">Date</label>
-                      <input class="form-control" name="date" id="date" type="date" [(ngModel)]="appointment.date" />
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-primary" type="submit">Save</button>
-                    </div>
-                  </form>
+    </div>
+    <div class="table-responsive scrollbar">
+      <table class="table mb-0">
+        <thead class="text-black bg-200">
+          <tr>
+            <th class="align-middle">Course</th>
+            <th class="align-middle">Mark</th>
+            <th class="align-middle">Credits</th>
+            <th class="align-middle">GPA</th>
+          </tr>
+        </thead>
+        <tbody id="bulk-select-body">
+          <tr *ngFor="let result of results">
+            <th class="align-middle">{{ result?.module_name }}</th>
+            <td class="align-middle">{{ result?.mark }}</td>
+            <td class="align-middle">{{ result?.credits }}</td>
+            <td class="align-middle">{{ result?.gpa }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-            </div>
-          
+
+
+
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-keyboard="false"
+  data-bs-backdrop="static"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl mt-6" role="document">
+    <div class="modal-content border-0">
+      <div class="position-absolute top-0 end-0 mt-3 me-3 z-index-1">
+        <button
+          class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body p-3">
+        <div class="bg-light rounded-top-lg g-3">
+          <h4 class="mb-1" id="staticBackdropLabel">Create Appointment</h4>
+        </div>
+        <form class="row g-3" (submit)="addAppointment()">
+          <div class="col-md-6">
+            <label class="form-label" for="purpose">Purpose</label>
+            <input
+              class="form-control"
+              name="purpose"
+              id="purpose"
+              type="text"
+              [(ngModel)]="appointment.purpose"
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="purpose">Place/Plartform</label>
+            <input
+              class="form-control"
+              name="status"
+              id="purpose"
+              type="text"
+              [(ngModel)]="appointment.platform_place"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label" for="date">Date</label>
+            <input
+              class="form-control"
+              name="date"
+              id="date"
+              type="date"
+              [(ngModel)]="appointment.date"
+            />
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Save</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
-  <div
-    class="modal fade"
-    id="staticBackdrop"
-    data-bs-keyboard="false"
-    data-bs-backdrop="static"
-    tabindex="-1"
-    aria-labelledby="staticBackdropLabel"
-    aria-hidden="true"
-  >
+</div>
 
+
+
+<div class="card h-lg-100 mt-4">
+  <div class="card-body h-100 pe-0">
+    <div class="chart-container">
+      <canvas id="MyChart">{{ chart }}</canvas>
+    </div>
   </div>
-  
+</div>

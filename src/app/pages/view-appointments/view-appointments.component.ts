@@ -14,28 +14,28 @@ export class ViewAppointmentsComponent {
 
   student: any;
   user: any;
-  appointments:any;
-  appointment!: Appointment; 
+  appointments!:Appointment[];
+  appointment!: Appointment;
 
   constructor(private appointmentService: AppointmentService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     const loggedUser = localStorage.getItem("loggedUser");
-  
+
     if (loggedUser !== null) {
       this.user = JSON.parse(loggedUser);
       console.log(this.user.user.advisor.advisor_id);
-   
-   
+
+
     } else {
       console.error("No data stored");
     }
-    this.viewStudents(); 
+    this.viewStudents();
   }
-  
+
 
   viewStudents() {
-  
+
 this.appointmentService.advisorAppointments(this.user.user.advisor.advisor_id).subscribe((res: any) => {
   this.appointments = res;
   console.log('data iri', res);
@@ -44,15 +44,15 @@ this.appointmentService.advisorAppointments(this.user.user.advisor.advisor_id).s
 });
   }
   approveAppointment(app: Appointment){
-    this.appointmentService.approveAppointment(app).subscribe((res:AppointmentResponse)=> {      
+    this.appointmentService.approveAppointment(app).subscribe((res:AppointmentResponse)=> {
       this.viewStudents();
     });
   }
-  
-  
 
 
 
- 
+
+
+
 
 }

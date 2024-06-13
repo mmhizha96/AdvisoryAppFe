@@ -5,4 +5,8 @@ export class Appointment {
   purpose!:string
   status!:string
   date!:Date
+  platform_place!:string
+first_name: any
+last_name: any
+phone_number: any
 }

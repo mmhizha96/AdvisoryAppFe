@@ -14,9 +14,11 @@
             <th class="align-middle">Advisor Name</th>
             <th class="align-middle">Purpose</th>
             <th class="align-middle">Phone Number</th>
+            <th class="align-middle">Place/Plaform</th>
+
             <th class="align-middle">Date</th>
             <th class="align-middle">Status</th>
-            <th class="align-middle">Actions</th> 
+            <th class="align-middle">Actions</th>
           </tr>
         </thead>
         <tbody id="bulk-select-body">
@@ -28,7 +30,9 @@
             <td class="align-middle">{{ app.first_name }} {{ app.last_name }}</td>
             <td class="align-middle">{{ app.purpose }}</td>
             <td class="align-middle">{{ app.phone_number }}</td>
-            <td class="align-middle">{{ app.date }}</td>
+            <td class="align-middle">{{ app.platform_place }}</td>
+
+            <td class="align-middle">{{ app.date |date}}</td>
             <td class="align-middle">{{ app.status }}</td>
 
             <td class="text-end">
@@ -39,7 +43,7 @@
                 >
                   <span class="fas fa-ellipsis-h fa-lg"></span>
                 </button>
-               
+
 <div class="modal fade" id="error-modal{{i}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px">
     <div class="modal-content position-relative">
@@ -71,17 +75,17 @@
               <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
               <button class="btn btn-primary" type="submit">Approve </button>
             </div>
-           
+
           </form>
         </div>
       </div>
-     
+
     </div>
   </div>
 </div>
               </div>
             </td>
-           
+
           </tr>
         </tbody>
       </table>
