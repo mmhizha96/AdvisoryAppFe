@@ -18,4 +18,8 @@ export class AdvisorServiceService {
     );
   }
 
+  connect(data: any){
+    return this.http.post(this.$baseurl + 'connect-advisor', data);
+  }
+
 }

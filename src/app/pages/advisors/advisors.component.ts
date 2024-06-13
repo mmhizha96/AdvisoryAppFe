@@ -1,41 +1,64 @@
 import { Component, OnInit } from '@angular/core';
 import { AdvisorServiceService } from '../../services/advisor-service.service';
-
 import { Router } from '@angular/router';
 import { Advisor } from '../../Model/advisor';
+import { Assignment } from '../../Interfaces/assignment';
 
 @Component({
   selector: 'app-advisors',
   templateUrl: './advisors.component.html',
-  styleUrl: './advisors.component.css'
+  styleUrls: ['./advisors.component.css'] // Corrected styleUrl to styleUrls
 })
 export class AdvisorsComponent implements OnInit {
 
-  advisors:Advisor[] = [];
+  advisors: Advisor[] = [];
+  user: any;
+  assignment: Assignment = {
+    advisor_id: 0,
+    student_id: 0,
+    status: ''
+  }; // Initialize assignment as an empty object literal
 
+  constructor(private advisorService: AdvisorServiceService, private router: Router) {}
 
-  constructor(private advisorService:AdvisorServiceService, private router: Router) { }
   ngOnInit(): void {
-   this.advisorsData();
+    this.advisorsData();
+
+    const loggedUser = localStorage.getItem("loggedUser");
+
+    if (loggedUser !== null) {
+      this.user = JSON.parse(loggedUser);
+    } else {
+      console.error("No data stored");
+    }
+    console.log(this.user.user.student.student_id);
   }
 
-  advisorsData(){
-    
-    this.advisorService.advisors().subscribe((res:Advisor[])=>{
+  advisorsData() {
+    this.advisorService.advisors().subscribe((res: Advisor[]) => {
       this.advisors = res;
-      console.log("advisors",this.advisors);
+      console.log("advisors", this.advisors);
     });
   }
 
-  setAdvisor(advisor:any) {
+  connectAdvisor(id: number) {
+    this.assignment.student_id = this.user.user.student.student_id;
+    this.assignment.advisor_id = id;
+
+    this.advisorService.connect(this.assignment).subscribe(res => {
+      console.log("musvo", res);
+    });
+  }
+
+  setAdvisor(advisor: any) {
     const advisorData = JSON.stringify(advisor);
     sessionStorage.setItem("advisorData", advisorData);
     this.router.navigate(['/main', 'makeAppointment']);
   }
-  setAdvisorData(advisor:any) {
+
+  setAdvisorData(advisor: any) {
     const advisorData = JSON.stringify(advisor);
     localStorage.setItem("advisorData", advisorData);
     this.router.navigate(['/main', 'studentAppointments']);
   }
-
 }
