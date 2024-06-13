@@ -15,5 +15,8 @@ retrieve(key:string){
   let user=localStorage.getItem(key);
 return JSON.parse(user as string);
 }
+clearstorage(){
+  let user=localStorage.clear();
+}
 
 }

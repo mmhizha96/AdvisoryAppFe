@@ -1,5 +1,5 @@
 <main class="main" id="top">
-  {{ user|json }}
+
   <div class="container" data-layout="container">
     <script>
       var isFluid = JSON.parse(localStorage.getItem('isFluid'));
@@ -10,7 +10,7 @@
       }
     </script>
     <div class="row flex-center min-vh-200 py-6">
-      <div class="col-sm-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7"><a class="d-flex flex-center mb-4" href="../../../index.html"><img class="me-2" src="../../../assets/img/icons/spot-illustrations/falcon.png" alt="" width="58" /><span class="font-sans-serif fw-bolder fs-5 d-inline-block">falcon</span></a>
+      <div class="col-sm-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7"><a class="d-flex flex-center mb-4" ><span class="font-sans-serif fw-bolder fs-5 d-inline-block">Student Advisory</span></a>
         <div class="card custom-card">
           <div class="card-header">
             <ul class="nav nav-tabs " id="myTab" role="tablist">
@@ -25,7 +25,7 @@
                   <div class="col-auto">
                     <h5>Advisor Register</h5>
                   </div>
-                  <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">Have an account?</span> <span><a routerLink="login">Login</a></span></div>
+                  <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">Have an account?</span> <span><a routerLink="../login">Login</a></span></div>
                 </div>
                 <form #createuser="ngForm">
                   <div class="row mb-3">
@@ -85,7 +85,7 @@
                   <div class="col-auto">
                     <h5>Student Register</h5>
                   </div>
-                  <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">Have an account?</span> <span><a routerLink="login">Login</a></span></div>
+                  <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">Have an account?</span> <span><a routerLink="../login">Login</a></span></div>
                 </div>
                 <form createstudent="ngForm">
 
