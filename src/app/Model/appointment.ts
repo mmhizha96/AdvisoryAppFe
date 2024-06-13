@@ -3,6 +3,6 @@ export class Appointment {
   student_id!:number
   advisor_id!:number
   purpose!:string
-  status!:number
+  status!:string
   date!:Date
 }

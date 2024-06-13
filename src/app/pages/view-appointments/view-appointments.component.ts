@@ -4,6 +4,7 @@ import { AppointmentService } from '../../services/appointment.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppointmentResponse } from '../../Interfaces/appointment-interface';
 
+
 @Component({
   selector: 'app-view-appointments',
   templateUrl: './view-appointments.component.html',
@@ -14,7 +15,7 @@ export class ViewAppointmentsComponent {
   student: any;
   user: any;
   appointments:any;
-  appointment: Appointment = new Appointment(); 
+  appointment!: Appointment; 
 
   constructor(private appointmentService: AppointmentService, private route: ActivatedRoute) { }
 
@@ -23,7 +24,8 @@ export class ViewAppointmentsComponent {
   
     if (loggedUser !== null) {
       this.user = JSON.parse(loggedUser);
-      console.log("data ra user", this.user.user.student.student_id);
+      console.log(this.user.user.advisor.advisor_id);
+   
    
     } else {
       console.error("No data stored");
@@ -34,13 +36,21 @@ export class ViewAppointmentsComponent {
 
   viewStudents() {
   
-this.appointmentService.viewAppointments(this.user.user.student.student_id).subscribe((res: any) => {
+this.appointmentService.advisorAppointments(this.user.user.advisor.advisor_id).subscribe((res: any) => {
   this.appointments = res;
   console.log('data iri', res);
 }, error => {
   console.error('Error:', error);
 });
   }
+  approveAppointment(app: Appointment){
+    this.appointmentService.approveAppointment(app).subscribe((res:AppointmentResponse)=> {      
+      this.viewStudents();
+    });
+  }
+  
+  
+
 
 
  
