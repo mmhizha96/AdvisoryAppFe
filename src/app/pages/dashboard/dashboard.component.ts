@@ -43,6 +43,7 @@ filter.student_id=this.user?.student?.student_id
 
   }
   getresultsTrend(){
+    if(this.myresultsdata.student_id!=undefined)
     this.resultTrendService.getResultTrends(    this.myresultsdata.student_id).subscribe((data: ResultTrend[]) => {
       this.resultTrends = data;
       this. createChart()
