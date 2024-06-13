@@ -1,3 +1,5 @@
+import { Department } from "./department"
+
 export class Advisor {
 advisor_id!:number
 user_id!:number
@@ -8,5 +10,6 @@ dob!:string
 last_name!:string
 first_name!:string
 department_id!: number
+department!:Department
 
 }

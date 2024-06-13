@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit{
   constructor(private resultTrendService: ResultsService,private storage:AppstorageService,private statsService: StatsService) {}
 
   ngOnInit(): void {
-    this.myresultsdata.student_id=this.storage.retrieve('loggedUser').user.student.student_id;
+    this.myresultsdata.student_id=this.storage.retrieve('loggedUser').user?.student?.student_id;
     this.getresultsTrend()
 this.user=this.storage.retrieve('loggedUser').user;
     this.getstatistics()

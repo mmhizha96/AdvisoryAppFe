@@ -5,7 +5,7 @@
 
       <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
 
-    </div><a class="navbar-brand" href="../../../index.html">
+    </div><a class="navbar-brand" >
       <div class="d-flex align-items-center py-3"><img class="me-2" src="assets/img/icons/spot-illustrations/falcon.png" alt="" width="20" /><span class="font-sans-serif">Advisory</span>
       </div>
     </a>
@@ -14,7 +14,7 @@
     <div class="navbar-vertical-content scrollbar">
       <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
         <li class="nav-item">
-          <!-- parent pages--><a class="nav-link " href="#dashboard" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="dashboard">
+          <!-- parent pages--><a class="nav-link " routerLink="dashboard" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="dashboard">
             <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-chart-pie"></span></span><span class="nav-link-text ps-1">Dashboard</span>
             </div>
           </a>
@@ -36,14 +36,14 @@
           </a>
           <ul class="nav collapse false" id="dashboard">
 
-      
+
             <li class="nav-item"><a class="nav-link " routerLink="call" routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
               <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-calendar"></span></span> <span class="nav-link-text ps-1">Call</span>
               </div>
             </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " routerLink="results" routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
+              <a class="nav-link "   *ngIf="user.role_id==2" routerLink="results" routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
                 <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-envelope-open"></span></span><span class="nav-link-text ps-1">Results</span>
                 </div>
               </a>
@@ -54,7 +54,12 @@
                 </div>
               </a>
             </li>
-
+            <li class="nav-item"  *ngIf="user.role_id==1">
+              <a class="nav-link " routerLink="view-appointments"  routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
+                <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-people-carry "></span></span><span class="nav-link-text ps-1">Appontments</span>
+                </div>
+              </a>
+            </li>
             <li class="nav-item"*ngIf="user.role_id==1">
               <a class="nav-link " routerLink="students"  routerLinkActive="active_route" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
                 <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-users"></span></span>   <span class="nav-link-text ps-1">students</span>
