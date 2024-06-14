@@ -85,6 +85,7 @@ export class MessagesComponent implements OnInit {
         (res) => {
             this.dataSentMessages = res;
             
+            
             // console.log(this.dataSentMessages);
         },
         (error) => {

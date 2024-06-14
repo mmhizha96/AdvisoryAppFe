@@ -59,6 +59,11 @@ export class StudentsComponent implements OnInit {
 
     this.router.navigate(['/main', 'appointment']);
   }
+  chat(student:any){
+    this.storage.store("dataStudent",student);
+    this.router.navigate(['/main', 'messages']);
+
+  }
 
 
 }
