@@ -49,8 +49,7 @@ export class StudentsComponent implements OnInit {
   }
 
   getAdvisorstudents() {
-    // console.log('munooo');
-
+  
     this.studentservice
       .getAdvisorstudents(this.user.user.advisor)
       .subscribe((res) => {
@@ -62,6 +61,12 @@ export class StudentsComponent implements OnInit {
     const studentDataString = JSON.stringify(student);
     sessionStorage.setItem("studentData", studentDataString);
     this.router.navigate(['/main', 'appointment']);
+  }
+
+  chat(student:any){
+    this.storage.store("dataStudent",student);
+    this.router.navigate(['/main', 'messages']);
+
   }
 
   

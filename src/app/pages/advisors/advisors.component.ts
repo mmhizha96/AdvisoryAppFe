@@ -63,8 +63,8 @@ export class AdvisorsComponent implements OnInit {
     this.router.navigate(['/main', 'studentAppointments']);
   }
 
-  chat(advisor_id:number){
-    this.storage.store("advisor_id",advisor_id);
+  chat(advisor:Advisor){
+    this.storage.store("dataAdvisor",advisor);
     this.router.navigate(['/main', 'messages']);
 
   }
