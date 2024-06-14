@@ -16,6 +16,7 @@ import { ViewAppointmentsComponent } from './pages/view-appointments/view-appoin
 import { MakeAppointmentComponent } from './pages/make-appointment/make-appointment.component';
 import { StudentAppointmentsComponent } from './pages/student-appointments/student-appointments.component';
 import { authGuard } from './guards/auth.guard';
+import { MessagesComponent } from './pages/messages/messages.component';
 
 const routes: Routes = [
   {path:'main', component:MainComponent,    canActivate: [authGuard],children:[
@@ -31,6 +32,8 @@ const routes: Routes = [
     {path:'students', component:StudentsComponent},
     {path:'view-student',component:ViewstudentComponent},
     {path:'view-appointments',component:ViewAppointmentsComponent},
+    {path:'messages',component:MessagesComponent},
+
     {path:'',redirectTo:'dashboard',pathMatch:'full'},
 
    ],

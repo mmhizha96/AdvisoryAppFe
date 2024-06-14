@@ -3,6 +3,7 @@ import { AdvisorServiceService } from '../../services/advisor-service.service';
 import { Router } from '@angular/router';
 import { Advisor } from '../../Model/advisor';
 import { Assignment } from '../../Interfaces/assignment';
+import { AppstorageService } from '../../services/appstorage.service';
 
 @Component({
   selector: 'app-advisors',
@@ -19,7 +20,7 @@ export class AdvisorsComponent implements OnInit {
     status: ''
   }; // Initialize assignment as an empty object literal
 
-  constructor(private advisorService: AdvisorServiceService, private router: Router) {}
+  constructor(private advisorService: AdvisorServiceService, private router: Router,private storage: AppstorageService) {}
 
   ngOnInit(): void {
     this.advisorsData();
@@ -60,5 +61,11 @@ export class AdvisorsComponent implements OnInit {
     const advisorData = JSON.stringify(advisor);
     localStorage.setItem("advisorData", advisorData);
     this.router.navigate(['/main', 'studentAppointments']);
+  }
+
+  chat(advisor:Advisor){
+    this.storage.store("dataAdvisor",advisor);
+    this.router.navigate(['/main', 'messages']);
+
   }
 }

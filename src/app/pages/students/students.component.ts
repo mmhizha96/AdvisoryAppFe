@@ -46,8 +46,7 @@ export class StudentsComponent implements OnInit {
   }
 
   getAdvisorstudents() {
-    // console.log('munooo');
-
+  
     this.studentservice
       .getAdvisorstudents(this.user.user.advisor)
       .subscribe((res) => {
