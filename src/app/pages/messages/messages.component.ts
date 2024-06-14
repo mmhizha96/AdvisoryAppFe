@@ -55,13 +55,19 @@ export class MessagesComponent implements OnInit {
     });
   }
   addMessage(messageForm: NgForm) {
+    console.log("shshshshshjsjhsjs");
     this.message.sender_id =this.user.user.id.toString();
     this.message.receiver_id = this.receiver.user.id.toString();
     this.message.message = messageForm.value.message;
-    console.log("zvawatumira", this.message);
+  
     this.messageService.sendMessage(this.message).subscribe(res => {
-      this.messageDetail=res;
-      // console.log('msuuu',this.messageDetail.data);
+
+
+
+      
+      this.sentMessages();
+
+      // console.log('msuuu',this.sentMessages());
     });
   }
 
@@ -69,24 +75,27 @@ export class MessagesComponent implements OnInit {
     this.message.sender_id =this.user.user.id.toString();
     this.message.receiver_id = this.student.student.user_id.toString();
     this.message.message = messageForm.value.message;
-    console.log("zvawatumira", this.message);
+    // console.log("zvawatumira", this.message);
     this.messageService.sendMessage(this.message).subscribe(res => {
-      this.messageDetail=res;
-      // console.log('msuuu',this.messageDetail.data);
+      // this.messageDetail=res;
+      this.AdvisorsentMessages();
+
+     
     });
   }
 
 
   sentMessages() {
+
+    console.log("retrieving messages");
+    
     const sender_id = this.user?.user?.id;
     const receiver_id = this?.receiver?.user?.id;
     
     this.messageService.getSentMessages(sender_id, receiver_id).subscribe(
         (res) => {
             this.dataSentMessages = res;
-            
-            
-            // console.log(this.dataSentMessages);
+       
         },
         (error) => {
             // Handle error if needed
