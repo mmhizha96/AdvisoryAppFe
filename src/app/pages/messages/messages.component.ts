@@ -84,6 +84,7 @@ export class MessagesComponent implements OnInit {
     this.messageService.getSentMessages(sender_id, receiver_id).subscribe(
         (res) => {
             this.dataSentMessages = res;
+            
             // console.log(this.dataSentMessages);
         },
         (error) => {
